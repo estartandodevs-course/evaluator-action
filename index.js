@@ -6,7 +6,8 @@ const positiveIcon = ':white_check_mark:';
 const negativeIcon = ':x:';
 
 try {
-  const testResults = core.getInput('testResults');
+  const testResultsInput = core.getInput('testResults');
+  const { testResults } = JSON.parse(testResultsInput)
   const data = runEvaluator(testResults)
   const rows = data.evaluations.map(value => {
     const row = [];

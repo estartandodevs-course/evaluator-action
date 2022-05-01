@@ -1,0 +1,12 @@
+name: "ED Evaluator"
+description: "test results evaluator"
+inputs:
+  testResults:
+    description: "Result of tests"
+    required: true
+outputs:
+  report:
+    description: "The report of tests results"
+runs:
+  using: "node16"
+  main: "dist/index.js"

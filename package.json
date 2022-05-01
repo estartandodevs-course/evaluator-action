@@ -1,0 +1,15 @@
+{
+  "name": "evaluator-action",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:estartandodevs-course/evaluator-action.git",
+  "author": "jonataspinto <jonatastdb_jp@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "ncc build index.js --license licenses.txt && rm -rf node_modules/*"
+  },
+  "dependencies": {
+    "@actions/core": "^1.7.0",
+    "json2md": "^1.12.0"
+  }
+}

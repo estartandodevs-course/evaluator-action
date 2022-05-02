@@ -6,7 +6,7 @@ Essa ação foi criada para ajudar a avaliar os trabalhos dos alunos.
 
 ## Como usar
 
->sugerimos usar em conjunto com [capture-test-result-action](https://github.com/estartandodevs-course/capture-test-result-action)
+>sugerimos usar em conjunto com [capture-test-result-action](https://github.com/estartandodevs-course/capture-test-result-action) como no exemplo abaixo.
 
 ```yml
 on:
@@ -58,6 +58,6 @@ jobs:
 | --- | --- | --- |
 | `testResults` | Valor gerado na [exportação do jest](https://jestjs.io/pt-BR/docs/configuration#testresultsprocessor-string) parseado com `JSON.stringify` |  |
 
-
+### Print de exemplo de comentário.
 <img width="930" alt="image" src="https://user-images.githubusercontent.com/34426836/166235131-55af6143-63d3-438d-985c-827c2d44e973.png">
 

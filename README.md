@@ -48,7 +48,7 @@ jobs:
 ```
 
 ## Usando valores capturados
->obs: O valor retornado é uma tabela em markdow.
+>obs: O valor retornado é uma tabela em markdow gerada com [json2md](https://www.npmjs.com/package/json2md)
 
 ```yml
       - name: Create comment with evaluation result

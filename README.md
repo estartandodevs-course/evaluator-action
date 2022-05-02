@@ -4,6 +4,14 @@ Uma GitHub action para gerar uma tabela com uma avaliação de acordo com result
 
 Essa ação foi criada para ajudar a avaliar os trabalhos dos alunos.
 
+## Configuração para jest
+
+```json
+"scripts": {
+    "test": "jest --json --outputFile=/tmp/result.json"
+  }
+```
+
 ## Como usar
 
 >sugerimos usar em conjunto com [capture-test-result-action](https://github.com/estartandodevs-course/capture-test-result-action) como no exemplo abaixo.

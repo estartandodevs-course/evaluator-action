@@ -69,3 +69,4 @@ jobs:
 ### Print de exemplo de comentário.
 <img width="930" alt="image" src="https://user-images.githubusercontent.com/34426836/166235131-55af6143-63d3-438d-985c-827c2d44e973.png">
 
+>Como criar uma [gh-action](https://docs.github.com/pt/actions/creating-actions/creating-a-javascript-action)

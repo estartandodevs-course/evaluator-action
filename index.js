@@ -13,14 +13,25 @@ try {
     const row = [];
     row.push(value.description);
     row.push(value.grade);
-    row.push(value.grade > 1 ? positiveIcon : negativeIcon);
+    row.push(value.grade === 1 ? positiveIcon : negativeIcon);
     return row;
   })
+
+  const averageTableRows = [
+    ["Desempenho", data.evaluationByPercentage.performance]
+    ["Percentual de cumprimento de requisitos ", data.evaluationByPercentage.totalPercentage]
+  ]
+  
   const report = json2md([
     { h1: "Resultado" },
     { table: {
-      headers: ["Descrição", "nota", "-"],
+      headers: ["Descrição", "nota", ""],
       rows
+    }},
+    { h2: "Desempenho" },
+    { table: {
+      headers: ["Item", "",],
+      averageTableRows
     }}
   ])
   core.setOutput("report", report);

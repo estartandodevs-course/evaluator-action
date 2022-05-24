@@ -45,7 +45,7 @@ function runEvaluator(testResults) {
 
   const evaluationByPercentage =  {
     performance: totalPercentage >= AVERAGE ? SUFFICIENT : INSUFFICIENT,
-    totalPercentage
+    totalPercentage: totalPercentage.toFixed(2)
   }
 
   const evaluationResult = {

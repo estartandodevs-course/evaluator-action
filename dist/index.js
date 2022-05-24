@@ -2488,8 +2488,8 @@ try {
     }},
     { h2: "Desempenho" },
     { table: {
-      headers: ["Item", "",],
-      averageTableRows
+      headers: ["Item", ""],
+      rows: averageTableRows
     }}
   ])
   core.setOutput("report", report);

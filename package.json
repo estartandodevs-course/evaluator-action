@@ -6,6 +6,7 @@
   "author": "jonataspinto <jonatastdb_jp@hotmail.com>",
   "license": "MIT",
   "scripts": {
+    "prebuild": "rm -rf dist/* && npm install",
     "build": "ncc build index.js --license licenses.txt && rm -rf node_modules/*"
   },
   "dependencies": {

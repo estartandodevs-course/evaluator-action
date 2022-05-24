@@ -2462,6 +2462,10 @@ const { runEvaluator } = __nccwpck_require__(366);
 
 const positiveIcon = ':white_check_mark:';
 const negativeIcon = ':x:';
+const titleByKeys = {
+  performance: "Desempenho",
+  totalPercentage: "Percentual de cumprimento de requisitos"
+}
 
 try {
   const testResultsInput = core.getInput('testResults');
@@ -2475,10 +2479,12 @@ try {
     return row;
   })
 
-  const averageTableRows = [
-    ["Desempenho", data.evaluationByPercentage.performance]
-    ["Percentual de cumprimento de requisitos ", data.evaluationByPercentage.totalPercentage]
-  ]
+  const averageTableRows = Object.keys(data.evaluationByPercentage).map(key => {
+    const row = [];
+    row.push(titleByKeys[key]);
+    row.push(`${data.evaluationByPercentage[key]}${key === titleByKeys.totalPercentage ? '%' : ''}`);
+    return row;
+  });
   
   const report = json2md([
     { h1: "Resultado" },

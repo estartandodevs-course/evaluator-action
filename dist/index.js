@@ -4,14 +4,17 @@
 /***/ 366:
 /***/ ((module) => {
 
-const CORRECT_ANSWER_GRADE = 3;
-const WRONG_ANSWER_GRADE = 1;
+const CORRECT_ANSWER_GRADE = 1;
+const WRONG_ANSWER_GRADE = 0;
+const AVERAGE = 70
+const INSUFFICIENT = 'insufficient'
+const SUFFICIENT = 'sufficient'
 
 function runEvaluator(testResults) {
   const evaluationsByRequirements = testResults
     .map(({ assertionResults }) =>
-      assertionResults.map(({ ancestorTitles, status }) => ({
-        describe: ancestorTitles[ancestorTitles.length - 1],
+      assertionResults.map(({ ancestorTitles, title,  status }) => ({
+        describe: title || ancestorTitles[ancestorTitles.length - 1],
         status,
       }))
     )
@@ -28,8 +31,8 @@ function runEvaluator(testResults) {
 
   const requirements = testResults
     .map(({ assertionResults }) =>
-      assertionResults.map(({ ancestorTitles }) => ({
-        description: ancestorTitles[ancestorTitles.length - 1],
+      assertionResults.map(({ ancestorTitles, title }) => ({
+        description: title || ancestorTitles[ancestorTitles.length - 1],
       }))
     )
     .flat();
@@ -42,8 +45,18 @@ function runEvaluator(testResults) {
         : WRONG_ANSWER_GRADE,
   }));
 
+  const evaluationValueTotal = evaluations.reduce((total, current) => total + current.grade , 0);
+
+  const totalPercentage = evaluationValueTotal / evaluations.length * 100
+
+  const evaluationByPercentage =  {
+    performance: totalPercentage >= AVERAGE ? SUFFICIENT : INSUFFICIENT,
+    totalPercentage
+  }
+
   const evaluationResult = {
     evaluations,
+    evaluationByPercentage
   };
   
   return evaluationResult;
@@ -2458,14 +2471,25 @@ try {
     const row = [];
     row.push(value.description);
     row.push(value.grade);
-    row.push(value.grade > 1 ? positiveIcon : negativeIcon);
+    row.push(value.grade === 1 ? positiveIcon : negativeIcon);
     return row;
   })
+
+  const averageTableRows = [
+    ["Desempenho", data.evaluationByPercentage.performance]
+    ["Percentual de cumprimento de requisitos ", data.evaluationByPercentage.totalPercentage]
+  ]
+  
   const report = json2md([
     { h1: "Resultado" },
     { table: {
-      headers: ["Descrição", "nota", "-"],
+      headers: ["Descrição", "nota", ""],
       rows
+    }},
+    { h2: "Desempenho" },
+    { table: {
+      headers: ["Item", "",],
+      averageTableRows
     }}
   ])
   core.setOutput("report", report);
